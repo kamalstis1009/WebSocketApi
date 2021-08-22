@@ -7,8 +7,6 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
 @Configuration
-// Enable WebSocket's message broker
-// Enable Websocket's message broker
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     /**
@@ -20,10 +18,10 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
      * The purpose of implementing WebSocketHandler is to receive and process messages, and STOMP has already done this for us.
      */
     @Override
-    public void registerStompEndpoints(StompEndpointRegistry stompEndpointRegistry) {
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
         // Register the endpoint of STOMP, and use SockJS protocol
         // Register the node of the STOMP protocol and specify the use of the SockJS protocol
-        stompEndpointRegistry.addEndpoint("/im").addInterceptors(new HandshakeInterceptor()).withSockJS();
+        registry.addEndpoint("/im").addInterceptors(new HandshakeInterceptor()).withSockJS();
     }
 
     /**
